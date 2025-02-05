@@ -41,10 +41,10 @@ class PostsController < ApplicationController
     render json: { error: "Post not found" }, status: :not_found
   end
 
-  # ✅ **ここに `toggle_favorite` を移動**
+  # ✅ `toggle_favorite` メソッドを **1つだけ定義**
   def toggle_favorite
     post = Post.find(params[:id])
-    post.update!(is_favorite: params[:is_favorite]) # `!` をつけてエラー時に例外を投げる
+    post.update!(is_favorite: params[:post][:is_favorite]) # postのネスト内から取得
     render json: post
   rescue ActiveRecord::RecordNotFound
     render json: { error: "Post not found" }, status: :not_found
@@ -57,13 +57,6 @@ class PostsController < ApplicationController
 
   # Strong Parameters
   def post_params
-    params.require(:post).permit(:title, :body, :is_favorite, :category, :salary)
-  end
-
-
-  # すべての投稿を削除
-  def destroy_all
-    Post.where(is_favorite: false).destroy_all # お気に入り以外の投稿のみ削除
-    render json: { message: "Non-favorite posts deleted" }, status: :ok
+    params.require(:post).permit(:title, :body, :category, :salary, :is_favorite)
   end
 end
