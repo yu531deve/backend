@@ -64,6 +64,6 @@ class PostsController < ApplicationController
 
   # Strong Parameters
   def post_params
-    params.require(:post).permit(:title, :body, :category, :salary, :is_favorite)
+    params.require(:post).permit(:title, :description, :category, :salary, :is_favorite)
   end
 end
