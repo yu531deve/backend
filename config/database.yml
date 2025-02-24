@@ -87,10 +87,12 @@ production:
   pool: 5
   url: <%= ENV["DATABASE_URL"] %>
 
+  connects_to:
+    writing:
+      url: <%= ENV["DATABASE_URL"] %>
+    queue:
+      url: <%= ENV["DATABASE_URL"] %>
+
   cable:
     adapter: postgresql
     url: <%= ENV["DATABASE_URL"] %>
-
-  queue:
-    adapter: postgresql
-    database: <%= ENV["DATABASE_URL"] %>
