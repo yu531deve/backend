@@ -89,5 +89,6 @@ production:
 
   # ActionCable用の設定を追加
   cable:
-    adapter: postgresql
-    url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  url: <%= ENV["CABLE_URL"] %>
+
