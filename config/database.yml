@@ -90,9 +90,12 @@ production:
   connects_to:
     writing:
       url: <%= ENV["DATABASE_URL"] %>
-    queue:
-      adapter: postgresql
+    reading:
       url: <%= ENV["DATABASE_URL"] %>
+
+  queue:
+    adapter: postgresql
+    url: <%= ENV["DATABASE_URL"] %>
 
   cable:
     adapter: postgresql
