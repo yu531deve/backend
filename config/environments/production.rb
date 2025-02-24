@@ -85,4 +85,11 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  # ActionCable の設定
+config.action_cable.mount_path = "/cable"
+config.action_cable.url = ENV['CABLE_URL']
+config.action_cable.allowed_request_origins = [ "https://job-search-backend0531.herokuapp.com", /https:\/\/job-search-backend0531\.herokuapp\.com/ ]
+config.action_cable.disable_request_forgery_protection = true
+
 end
