@@ -87,10 +87,10 @@ production:
   pool: 5
   url: <%= ENV["DATABASE_URL"] %>
 
-  queue:
+  cable:
     adapter: postgresql
     url: <%= ENV["DATABASE_URL"] %>
 
-  cable:
+  queue:
     adapter: postgresql
-    url: <%= ENV["CABLE_URL"] %>
+    database: <%= ENV["DATABASE_URL"] %>
