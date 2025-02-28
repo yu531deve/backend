@@ -48,8 +48,8 @@ Rails.application.configure do
   config.cache_store = :solid_cache_store
 
   # Replace the default in-process and non-durable queuing backend for Active Job.
-  config.active_job.queue_adapter = :solid_queue
-  config.solid_queue.connects_to = { database: { writing: :queue } }
+  # config.active_job.queue_adapter = :solid_queue
+  # config.solid_queue.connects_to = { database: { writing: :queue } }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -77,19 +77,18 @@ Rails.application.configure do
   # Only use :id for inspections in production.
   config.active_record.attributes_for_inspect = [ :id ]
 
-  # Enable DNS rebinding protection and other `Host` header attacks.
-  # config.hosts = [
-  #   "example.com",     # Allow requests from example.com
-  #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
-  # ]
-  #
-  # Skip DNS rebinding protection for the default health check endpoint.
-  # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+# Enable DNS rebinding protection and other `Host` header attacks.
+# config.hosts = [
+#   "example.com",     # Allow requests from example.com
+#   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
+# ]
+#
+# Skip DNS rebinding protection for the default health check endpoint.
+# config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
-  # ActionCable の設定
+# ActionCable の設定
 config.action_cable.mount_path = "/cable"
-config.action_cable.url = ENV['CABLE_URL']
+config.action_cable.url = ENV["CABLE_URL"]
 config.action_cable.allowed_request_origins = [ "https://job-search-backend0531.herokuapp.com", /https:\/\/job-search-backend0531\.herokuapp\.com/ ]
 config.action_cable.disable_request_forgery_protection = true
-
 end
