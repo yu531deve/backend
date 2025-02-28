@@ -93,7 +93,7 @@ production:
     reading:
       url: <%= ENV["DATABASE_URL"] %>
     queue:
-      url: <%= ENV["DATABASE_URL"] %>
+      url: <%= ENV["QUEUE_DATABASE_URL"] || ENV["DATABASE_URL"] %> # ← ここを修正
 
   cable:
     adapter: postgresql
